@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:Notifications.Wpf.Controls;assembly=Notifications.Wpf"
         mc:Ignorable="d"
-        Title="Setting" Height="430" Width="430"
+        Title="Setting" Height="584" Width="430"
         WindowStartupLocation="CenterScreen" Icon="/Res/Logo.ico" ResizeMode="NoResize" SizeToContent="Manual" WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
         Loaded="Window_Loaded"
         >
-    
+
     <Grid>
         <Border BorderThickness="1" Margin="18,18,18,18" CornerRadius="11" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Background="White">
             <Border.Effect>
@@ -24,8 +24,23 @@
             <Label Content="User ID" FontFamily="Heebo-Regular" FontSize="16" Foreground="#A9ABC3" HorizontalAlignment="Left" Margin="57,0,0,0"/>
             <TextBox x:Name="txtUserID" Text="123" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="70,0,70,0" Height="55" Background="#EEEDFF"
                      FontSize="24" FontFamily="Helvetica Neue" />
-            <Button x:Name="btnConnect" Content="Connect" Width="151" Height="55" Margin="0,50,0,0" Background="#6D65FD" Foreground="White" FontSize="20" FontWeight="Bold" FontFamily="Helvetica Neue"
+            <Button x:Name="btnConnect" Margin="0,20,0,0" Content="Connect" Width="151" Height="55" Background="#6D65FD" Foreground="White" FontSize="20" FontWeight="Bold" FontFamily="Helvetica Neue"
+                        HorizontalAlignment="Center"
                     Click="btnConnect_Click"/>
+            <Label Content="Choose your settings preferences:" FontFamily="Helvetica Neue" FontSize="16" Foreground="#707070" HorizontalAlignment="Left" Margin="51,41,0,0"/>
+            <Grid>
+                <Label Content="Show/Hide Notification" FontFamily="Helvetica Neue" FontSize="16" Foreground="#707070" HorizontalAlignment="Left" Margin="51,0,0,0"/>
+                <RadioButton x:Name="radioShowNotification" GroupName="NotificationVisible"  IsChecked="True" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="312,0,0,0" Checked="radioShowNotification_Checked"/>
+                <RadioButton x:Name="radioHideNotification" GroupName="NotificationVisible" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="360,0,0,0" Checked="radioHideNotification_Checked"/>
+            </Grid>
+            <Grid>
+                <Label Content="Play Sound" FontFamily="Helvetica Neue" FontSize="16" Foreground="#707070" HorizontalAlignment="Left" Margin="51,0,0,0"/>
+                <RadioButton x:Name="radioSoundOn" GroupName="NotificationSound"  IsChecked="True" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="312,0,0,0" Checked="radioSoundOn_Checked"/>
+                <RadioButton x:Name="radioSoundOff" GroupName="NotificationSound" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="360,0,0,0" Checked="radioSoundOff_Checked"/>
+            </Grid>
+            <Button x:Name="btnCancel" Content="Close" Width="151" Height="55" Background="#6D65FD" Foreground="White" FontSize="20" FontWeight="Bold" FontFamily="Helvetica Neue"
+                        HorizontalAlignment="Center" Margin="0,20,0,0"
+                    Click="btnCancel_Click"/>
         </StackPanel>
     </Grid>
 </Window>

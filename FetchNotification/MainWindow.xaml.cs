@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Media;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -110,6 +111,9 @@ namespace FetchNotification
 
         public void ReceivedMessage(String msg)
         {
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile("Configuration.ini");
+
             //String strResponse = strResponse = "{ 'con':'" + DateTime.Now.Ticks.ToString() + "','type':'lead','image':'https://lh5.googleusercontent.com/-HJDyncz7x1A/AAAAAAAAAAI/AAAAAAAD5LQ/G2hYxZn_pDg/photo.jpg?sz=64','message':'Hello Today','link':'html/body/div[3]/div[1]/div/div/h1/img'}"; ;
             dynamic msgJson = JsonConvert.DeserializeObject(msg);
             var content = new NotificationContent
@@ -127,13 +131,16 @@ namespace FetchNotification
                 //onClick: () => _notificationManager.Show(content));
                 onClick: () => OpenUrl(content));
 
-            if(this.IsVisible)
+            if(bool.Parse(data["SETTINGS"]["SHOW_NOTIFICATION"]) == true)
             {
-
+                _notificationManager.Show(content);
             }
-            else
+            
+            if(bool.Parse(data["SETTINGS"]["SOUND_ON"]) == true)
             {
-                _notificationManager.Show(content);       // for bubble notification on the tray area.
+                SoundPlayer player = new SoundPlayer("notification.wav");
+                player.Load();
+                player.Play();
             }
         }
 
@@ -151,7 +158,6 @@ namespace FetchNotification
         private void OpenUrl(NotificationContent content)
         {
             string url = content.link;
-            return;
             try
             {
                 Process.Start(url);
