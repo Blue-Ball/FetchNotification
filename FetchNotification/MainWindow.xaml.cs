@@ -30,6 +30,7 @@ namespace FetchNotification
     {
         private readonly NotificationManager _notificationManager = new NotificationManager();
         public static MainWindow mainWnd = null;
+        public static SettingWindow settingWnd = null;
         static WatsonWsClient _Client = null;
 
         public MainWindow()
@@ -182,6 +183,25 @@ namespace FetchNotification
         {
             this.MouseDown += delegate { DragMove(); };
 
+            connectToServer();
+        }
+
+        private void btnSetting_Click(object sender, RoutedEventArgs e)
+        {
+            if(settingWnd == null)
+                settingWnd = new SettingWindow();
+
+            this.Hide();
+            settingWnd.Show();
+        }
+
+        private void Window_ContentRendered(object sender, EventArgs e)
+        {
+            
+        }
+
+        public void connectToServer()
+        {
             var parser = new FileIniDataParser();
             IniData data = parser.ReadFile("Configuration.ini");
 

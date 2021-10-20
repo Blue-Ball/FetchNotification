@@ -10,6 +10,8 @@ namespace FetchNotification.Commands
     {
         public override void Execute(object parameter)
         {
+            if (MainWindow.settingWnd != null)
+                MainWindow.settingWnd.Hide();
             Window win = GetTaskbarWindow(parameter);
             if (win.IsVisible)
                 win.Hide();

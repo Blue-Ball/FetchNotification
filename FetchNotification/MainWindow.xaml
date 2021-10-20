@@ -8,11 +8,12 @@
         xmlns:local="clr-namespace:FetchNotification"
         xmlns:controls="clr-namespace:Notifications.Wpf.Controls;assembly=Notifications.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="710" Width="430"
+        Title="Main" Height="710" Width="430"
         WindowStartupLocation="CenterScreen" Icon="/Res/Logo.ico" ResizeMode="NoResize" SizeToContent="Manual" WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
         Loaded="Window_Loaded"
+        ContentRendered="Window_ContentRendered"
         >
 
     <Grid>
@@ -55,10 +56,12 @@
             </ScrollViewer >
 
         </StackPanel>
-        <Button Width="30" Height="30" Margin="57,0,0,50" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderThickness="0" Background="Transparent">
+        <Button Width="30" Height="30" Margin="57,0,0,50" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderThickness="0" Background="Transparent"
+                Visibility="Collapsed">
             <Image Source="Res/Bell.png" />
         </Button>
-        <Button Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,57,50" BorderThickness="0" Background="Transparent">
+        <Button x:Name="btnSetting"  Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,57,50" BorderThickness="0" Background="Transparent"
+                Click="btnSetting_Click">
             <Image Source="Res/settings.png"/>
         </Button>
     </Grid>
