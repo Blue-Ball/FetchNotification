@@ -34,7 +34,7 @@
                 <RadioButton x:Name="radioHideNotification" GroupName="NotificationVisible" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="360,0,0,0" Checked="radioHideNotification_Checked"/>
             </Grid>
             <Grid>
-                <Label Content="Play Sound" FontFamily="Helvetica Neue" FontSize="16" Foreground="#707070" HorizontalAlignment="Left" Margin="51,0,0,0"/>
+                <Label Content="Sound On/Off" FontFamily="Helvetica Neue" FontSize="16" Foreground="#707070" HorizontalAlignment="Left" Margin="51,0,0,0"/>
                 <RadioButton x:Name="radioSoundOn" GroupName="NotificationSound"  IsChecked="True" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="312,0,0,0" Checked="radioSoundOn_Checked"/>
                 <RadioButton x:Name="radioSoundOff" GroupName="NotificationSound" Content="" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="360,0,0,0" Checked="radioSoundOff_Checked"/>
             </Grid>
