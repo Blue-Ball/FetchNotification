@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FetchNotification.Properties {
+namespace FetchNotification.Language {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace FetchNotification.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace FetchNotification.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FetchNotification.Properties.Resources", typeof(Resources).Assembly);
@@ -51,12 +51,183 @@ namespace FetchNotification.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Client.
+        /// </summary>
+        public static string add_lead {
+            get {
+                return ResourceManager.GetString("add_lead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Call Bounce.
+        /// </summary>
+        public static string call_bounce {
+            get {
+                return ResourceManager.GetString("call_bounce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chat Message.
+        /// </summary>
+        public static string chat_message {
+            get {
+                return ResourceManager.GetString("chat_message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose your settings prefrences.
+        /// </summary>
+        public static string choose_setting {
+            get {
+                return ResourceManager.GetString("choose_setting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connect.
+        /// </summary>
+        public static string connect {
+            get {
+                return ResourceManager.GetString("connect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You connected.
+        /// </summary>
+        public static string connected {
+            get {
+                return ResourceManager.GetString("connected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection failed.
+        /// </summary>
+        public static string connection_fail {
+            get {
+                return ResourceManager.GetString("connection_fail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        public static string exit {
+            get {
+                return ResourceManager.GetString("exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are loged with this api token.
+        /// </summary>
+        public static string loged_with {
+            get {
+                return ResourceManager.GetString("loged_with", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log out.
+        /// </summary>
+        public static string logout {
+            get {
+                return ResourceManager.GetString("logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message in Mission.
+        /// </summary>
+        public static string mission_message {
+            get {
+                return ResourceManager.GetString("mission_message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Email.
+        /// </summary>
+        public static string new_email {
+            get {
+                return ResourceManager.GetString("new_email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Mission.
+        /// </summary>
+        public static string new_mission {
+            get {
+                return ResourceManager.GetString("new_mission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Past here your api_token.
+        /// </summary>
+        public static string paste_api_token {
+            get {
+                return ResourceManager.GetString("paste_api_token", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Schedualed Mission.
+        /// </summary>
+        public static string schedualed_mission {
+            get {
+                return ResourceManager.GetString("schedualed_mission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ticket Message.
+        /// </summary>
+        public static string service_message {
+            get {
+                return ResourceManager.GetString("service_message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string settings {
+            get {
+                return ResourceManager.GetString("settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show/Hide.
+        /// </summary>
+        public static string show_hide {
+            get {
+                return ResourceManager.GetString("show_hide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service Message.
+        /// </summary>
+        public static string system_message {
+            get {
+                return ResourceManager.GetString("system_message", resourceCulture);
             }
         }
     }

@@ -43,13 +43,20 @@ namespace FetchNotification
 
         static void InitializeClient(String strServerProtocal, String strServerAddress, int nServerPort, string strParam)
         {
+            // For Test
+            strServerProtocal = "ws";
+            strServerAddress = "localhost";
+            nServerPort = 9006;
+            strParam = "123";
+
             String strURI = strServerProtocal + "://" + strServerAddress + ":" + nServerPort.ToString() + "/" + strParam;
             InitializeClientURI(strURI);
         }
 
         static void InitializeClientURI(String NewURI)
         {
-            if (_Client != null) _Client.Dispose();
+            if (_Client != null)
+                _Client.Dispose();
 
             // original constructor
             //_Client = new WatsonWsClient(_ServerIp, _ServerPort, _Ssl);
@@ -133,7 +140,7 @@ namespace FetchNotification
 
             if(bool.Parse(data["SETTINGS"]["SHOW_NOTIFICATION"]) == true)
             {
-                _notificationManager.Show(content);
+                _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
             }
             
             if(bool.Parse(data["SETTINGS"]["SOUND_ON"]) == true)
