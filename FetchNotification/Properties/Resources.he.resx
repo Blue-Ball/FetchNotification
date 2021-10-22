@@ -118,60 +118,60 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="add_lead" xml:space="preserve">
-    <value>New Client</value>
+    <value>ליד חדש</value>
   </data>
   <data name="call_bounce" xml:space="preserve">
-    <value>Call Bounce</value>
+    <value>הקפצת שיחה</value>
   </data>
   <data name="chat_message" xml:space="preserve">
-    <value>Chat Message</value>
+    <value>הודעת צ'אט</value>
   </data>
   <data name="choose_setting" xml:space="preserve">
-    <value>Choose your settings prefrences</value>
+    <value>בחר הגדרות להתראה קולית</value>
   </data>
   <data name="connect" xml:space="preserve">
-    <value>Connect</value>
+    <value>התחבר</value>
   </data>
   <data name="connected" xml:space="preserve">
-    <value>You connected</value>
+    <value>התחבר בהצלחה</value>
   </data>
   <data name="connection_fail" xml:space="preserve">
-    <value>Connection failed</value>
+    <value>ההתחברות נכשלה</value>
   </data>
   <data name="exit" xml:space="preserve">
-    <value>Exit</value>
+    <value>צא מהתוכנה</value>
   </data>
   <data name="loged_with" xml:space="preserve">
-    <value>You are loged with this api token</value>
+    <value>אתה מחובר בטוקן הבא:</value>
   </data>
   <data name="logout" xml:space="preserve">
-    <value>Log out</value>
+    <value>התנתק</value>
   </data>
   <data name="mission_message" xml:space="preserve">
-    <value>Message in Mission</value>
+    <value>הודעה במשימה</value>
   </data>
   <data name="new_email" xml:space="preserve">
-    <value>New Email</value>
+    <value>אימייל חדש</value>
   </data>
   <data name="new_mission" xml:space="preserve">
-    <value>New Mission</value>
+    <value>משימה חדשה</value>
   </data>
   <data name="paste_api_token" xml:space="preserve">
-    <value>Past here your api_token</value>
+    <value>הדבק כאן אתה הטוקן API שלך</value>
   </data>
   <data name="schedualed_mission" xml:space="preserve">
-    <value>Schedualed Mission</value>
+    <value>משימה מתוזמנת</value>
   </data>
   <data name="service_message" xml:space="preserve">
-    <value>Ticket Message</value>
+    <value>קריאת שרות</value>
   </data>
   <data name="settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>הגדרות</value>
   </data>
   <data name="show_hide" xml:space="preserve">
-    <value>Show/Hide</value>
+    <value>הסתר\הראה</value>
   </data>
   <data name="system_message" xml:space="preserve">
-    <value>Service Message</value>
+    <value>הודעת מערכת</value>
   </data>
 </root>

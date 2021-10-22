@@ -12,6 +12,9 @@ namespace FetchNotification.Commands
         {
             if (MainWindow.settingWnd != null)
                 MainWindow.settingWnd.Hide();
+            if (MainWindow.settingWndConnected != null)
+                MainWindow.settingWndConnected.Hide();
+
             Window win = GetTaskbarWindow(parameter);
             if (win.IsVisible)
                 win.Hide();

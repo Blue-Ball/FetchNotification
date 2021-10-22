@@ -6,7 +6,7 @@
         xmlns:tb="http://www.hardcodet.net/taskbar"
         xmlns:Commands="clr-namespace:FetchNotification.Commands"
         xmlns:controls="clr-namespace:Notifications.Wpf.Controls;assembly=Notifications.Wpf"
-        xmlns:lang="clr-namespace:FetchNotification.Language"
+        xmlns:CC="clr-namespace:FetchNotification.Properties"
         mc:Ignorable="d"
         Title="Main" Height="710" Width="430"
         WindowStartupLocation="CenterScreen" Icon="/Res/Logo.ico" ResizeMode="NoResize" SizeToContent="Manual" WindowStyle="None"
@@ -19,16 +19,16 @@
     <Grid>
         <tb:TaskbarIcon x:Name="tb"
                     Visibility="Visible"
-                    ToolTipText="Fallback ToolTip for Windows xp"
+                    ToolTipText="Fetch Notification"
                     IconSource="Res/Logo.ico"
                     MenuActivation="LeftOrRightClick"
       >
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="{x:Static lang:Resources.show_hide}" 
+                    <MenuItem Header="{x:Static CC:Resources.show_hide}" 
                               Command="{Commands:ShowMainWindowCommand}"
                               CommandParameter="{Binding}"/>
-                    <MenuItem Header="{x:Static lang:Resources.exit}" 
+                    <MenuItem Header="{x:Static CC:Resources.exit}" 
                               Command="{Commands:ExitCommand}"
                               CommandParameter="{Binding}"/>
                 </ContextMenu>
@@ -47,21 +47,21 @@
             </Border.Effect>
         </Border>
         <StackPanel>
-            <Image Source="Res/Logo.png" Width="88" Height="73" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0"/>
+            <Image Source="Res/Logo.png" Width="88" Height="73" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,60,0,0"/>
             <Label Content="To always be on the wave of things!" FontFamily="Helvetica Neue" FontSize="16" Foreground="#707070" HorizontalAlignment="Center" Margin="0,29,0,0"/>
             <Label Content="Notifications" FontFamily="Heebo-Regular" FontSize="16" Foreground="#A9ABC3" HorizontalAlignment="Left" Margin="57,0,0,0"/>
-            <ScrollViewer Margin="25,0,25,0" Width="Auto" VerticalScrollBarVisibility="Auto" Height="368"
+            <ScrollViewer Margin="25,0,25,0" Width="Auto" VerticalScrollBarVisibility="Auto" Height="370"
                           >
                 <controls:NotificationArea x:Name="WindowArea" Position="TopLeft" MaxItems="9999"/>
             </ScrollViewer >
 
         </StackPanel>
-        <Button Width="30" Height="30" Margin="57,0,0,50" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderThickness="0" Background="Transparent"
-                Visibility="Collapsed">
+        <Button x:Name="btnAlart" Width="30" Height="30" Margin="57,0,0,50" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderThickness="0" Background="Transparent"
+                Visibility="Collapsed" Click="btnAlart_Click">
             <Image Source="Res/Bell.png" />
         </Button>
         <Button x:Name="btnSetting"  Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,57,50" BorderThickness="0" Background="Transparent"
-                Click="btnSetting_Click">
+                ToolTip="{x:Static CC:Resources.settings}" Click="btnSetting_Click">
             <Image Source="Res/settings.png"/>
         </Button>
     </Grid>

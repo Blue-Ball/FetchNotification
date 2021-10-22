@@ -10,6 +10,7 @@ using System.Linq;
 using System.Media;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,6 +33,7 @@ namespace FetchNotification
         private readonly NotificationManager _notificationManager = new NotificationManager();
         public static MainWindow mainWnd = null;
         public static SettingWindow settingWnd = null;
+        public static SettingWindowConnected settingWndConnected = null;
         static WatsonWsClient _Client = null;
 
         public MainWindow()
@@ -57,11 +59,11 @@ namespace FetchNotification
         {
             if (_Client != null)
                 _Client.Dispose();
+            _Client = null;
 
             // original constructor
             //_Client = new WatsonWsClient(_ServerIp, _ServerPort, _Ssl);
             _Client = new WatsonWsClient(new Uri(NewURI));
-
 
 
             _Client.ServerConnected += ServerConnected;
@@ -77,16 +79,15 @@ namespace FetchNotification
             if (!_Client.Connected)
             {
                 mainWnd.Dispatcher.Invoke(delegate {
-                    mainWnd.StatusChange("Server Connection failed", NotificationType.Error);
+                    mainWnd.StatusChange(Properties.Resources.connection_fail, NotificationType.Error);
                 });
             }
         }
 
         static void ServerConnected(object sender, EventArgs args)
         {
-            System.Diagnostics.Debug.WriteLine("Server connected");
             mainWnd.Dispatcher.Invoke(delegate {
-                mainWnd.StatusChange("Server Connected", NotificationType.Success);
+                mainWnd.StatusChange(Properties.Resources.connected, NotificationType.Success);
             });
         }
 
@@ -94,7 +95,7 @@ namespace FetchNotification
         {
             System.Diagnostics.Debug.WriteLine("Server disconnected");
             mainWnd.Dispatcher.Invoke(delegate {
-                mainWnd.StatusChange("Server Disconnected", NotificationType.Error);
+                mainWnd.StatusChange(Properties.Resources.connection_fail, NotificationType.Error);
             });
         }
 
@@ -134,27 +135,144 @@ namespace FetchNotification
                 time = DateTime.Now,
                 time_view = DateTime.Now.ToString("hh:mm tt")
             };
+
             _notificationManager.Show(content, "WindowArea", TimeSpan.FromMilliseconds(-1),
-                //onClick: () => _notificationManager.Show(content));
                 onClick: () => OpenUrl(content));
 
-            if(bool.Parse(data["SETTINGS"]["SHOW_NOTIFICATION"]) == true)
+            bool add_lead_notification = bool.Parse(data["NOTIFICATIONS"]["add_lead"]);
+            bool call_bounce_notification = bool.Parse(data["NOTIFICATIONS"]["call_bounce"]);
+            bool schedualed_mission_notification = bool.Parse(data["NOTIFICATIONS"]["schedualed_mission"]);
+            bool new_mission_notification = bool.Parse(data["NOTIFICATIONS"]["new_mission"]);
+            bool new_email_notification = bool.Parse(data["NOTIFICATIONS"]["new_email"]);
+            bool chat_message_notification = bool.Parse(data["NOTIFICATIONS"]["chat_message"]);
+            bool service_message_notification = bool.Parse(data["NOTIFICATIONS"]["service_message"]);
+            bool mission_message_notification = bool.Parse(data["NOTIFICATIONS"]["mission_message"]);
+            bool system_message_notification = bool.Parse(data["NOTIFICATIONS"]["system_message"]);
+
+            bool add_lead_mute = bool.Parse(data["SOUNDS"]["add_lead"]);
+            bool call_bounce_mute = bool.Parse(data["SOUNDS"]["call_bounce"]);
+            bool schedualed_mission_mute = bool.Parse(data["SOUNDS"]["schedualed_mission"]);
+            bool new_mission_mute = bool.Parse(data["SOUNDS"]["new_mission"]);
+            bool new_email_mute = bool.Parse(data["SOUNDS"]["new_email"]);
+            bool chat_message_mute = bool.Parse(data["SOUNDS"]["chat_message"]);
+            bool service_message_mute = bool.Parse(data["SOUNDS"]["service_message"]);
+            bool mission_message_mute = bool.Parse(data["SOUNDS"]["mission_message"]);
+            bool system_message_mute = bool.Parse(data["SOUNDS"]["system_message"]);
+
+            if (msgJson.type == "add_lead")
             {
-                _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
+                if (add_lead_notification)
+                    _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
+                if (add_lead_mute)
+                {
+                    SoundPlayer player = new SoundPlayer("notification.wav");
+                    player.Load();
+                    player.Play();
+                }
             }
-            
-            if(bool.Parse(data["SETTINGS"]["SOUND_ON"]) == true)
+
+            if (msgJson.type == "call_bounce")
             {
-                SoundPlayer player = new SoundPlayer("notification.wav");
-                player.Load();
-                player.Play();
+                if (add_lead_notification)
+                    _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
+                if (add_lead_mute)
+                {
+                    SoundPlayer player = new SoundPlayer("notification.wav");
+                    player.Load();
+                    player.Play();
+                }
+            }
+
+            if (msgJson.type == "schedualed_mission")
+            {
+                if (add_lead_notification)
+                    _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
+                if (add_lead_mute)
+                {
+                    SoundPlayer player = new SoundPlayer("notification.wav");
+                    player.Load();
+                    player.Play();
+                }
+            }
+
+            if (msgJson.type == "new_mission")
+            {
+                if (add_lead_notification)
+                    _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
+                if (add_lead_mute)
+                {
+                    SoundPlayer player = new SoundPlayer("notification.wav");
+                    player.Load();
+                    player.Play();
+                }
+            }
+
+            if (msgJson.type == "new_email")
+            {
+                if (add_lead_notification)
+                    _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
+                if (add_lead_mute)
+                {
+                    SoundPlayer player = new SoundPlayer("notification.wav");
+                    player.Load();
+                    player.Play();
+                }
+            }
+
+            if (msgJson.type == "chat_message")
+            {
+                if (add_lead_notification)
+                    _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
+                if (add_lead_mute)
+                {
+                    SoundPlayer player = new SoundPlayer("notification.wav");
+                    player.Load();
+                    player.Play();
+                }
+            }
+
+            if (msgJson.type == "service_message")
+            {
+                if (add_lead_notification)
+                    _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
+                if (add_lead_mute)
+                {
+                    SoundPlayer player = new SoundPlayer("notification.wav");
+                    player.Load();
+                    player.Play();
+                }
+            }
+
+            if (msgJson.type == "mission_message")
+            {
+                if (add_lead_notification)
+                    _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
+                if (add_lead_mute)
+                {
+                    SoundPlayer player = new SoundPlayer("notification.wav");
+                    player.Load();
+                    player.Play();
+                }
+            }
+
+            if (msgJson.type == "system_message")
+            {
+                if (add_lead_notification)
+                    _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
+                if (add_lead_mute)
+                {
+                    SoundPlayer player = new SoundPlayer("notification.wav");
+                    player.Load();
+                    player.Play();
+                }
             }
         }
 
         static void MessageReceived(object sender, MessageReceivedEventArgs args)
         {
             string msg = "(null)";
-            if (args.Data != null && args.Data.Length > 0) msg = Encoding.UTF8.GetString(args.Data);
+            if (args.Data != null && args.Data.Length > 0)
+                msg = Encoding.UTF8.GetString(args.Data);
             System.Diagnostics.Debug.WriteLine(args.MessageType.ToString() + " from server: " + msg);
 
             mainWnd.Dispatcher.Invoke(delegate {
@@ -201,11 +319,20 @@ namespace FetchNotification
 
         private void btnSetting_Click(object sender, RoutedEventArgs e)
         {
-            if(settingWnd == null)
-                settingWnd = new SettingWindow();
+            if(_Client != null && _Client.Connected)
+            {
+                if(MainWindow.settingWndConnected == null)
+                    MainWindow.settingWndConnected = new SettingWindowConnected();
+                MainWindow.settingWndConnected.Show();
+            }
+            else
+            {
+                if (MainWindow.settingWnd == null)
+                    MainWindow.settingWnd = new SettingWindow();
+                MainWindow.settingWnd.Show();
+            }
 
             this.Hide();
-            settingWnd.Show();
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
@@ -226,6 +353,17 @@ namespace FetchNotification
                 strParam = "?id=" + data["CONNECTION"]["USER_ID"];
 
             InitializeClient(strServerProtocal, strServerAddress, nServerPort, strParam);
+        }
+
+        public void DisconnectToServer()
+        {
+            if (_Client != null)
+                _Client.Dispose();
+            _Client = null;
+        }
+
+        private void btnAlart_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

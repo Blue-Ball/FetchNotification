@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FetchNotification.Language {
+namespace FetchNotification.Properties {
     using System;
     
     

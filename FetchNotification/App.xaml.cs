@@ -13,5 +13,10 @@ namespace FetchNotification
     /// </summary>
     public partial class App : Application
     {
+        App()
+        {
+            // For Test
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("he");
+        }
     }
 }

@@ -42,30 +42,6 @@ namespace FetchNotification
 
             txtUserID.Text = data["CONNECTION"]["USER_ID"];
 
-            bool bShowNotification = bool.Parse(data["SETTINGS"]["SHOW_NOTIFICATION"]);
-            if(bShowNotification)
-            {
-                radioShowNotification.IsChecked = true;
-                radioHideNotification.IsChecked = false;
-            }
-            else
-            {
-                radioShowNotification.IsChecked = false;
-                radioHideNotification.IsChecked = true;
-            }
-
-            bool bSoundOnOff = bool.Parse(data["SETTINGS"]["SOUND_ON"]);
-            if (bSoundOnOff)
-            {
-                radioSoundOn.IsChecked = true;
-                radioSoundOff.IsChecked = false;
-            }
-            else
-            {
-                radioSoundOn.IsChecked = false;
-                radioSoundOff.IsChecked = true;
-            }
-
             txtUserID.Focus();
             txtUserID.CaretIndex = txtUserID.Text.Length;
         }
@@ -89,46 +65,10 @@ namespace FetchNotification
 
             this.Hide();
             MainWindow.mainWnd.Show();
-
             MainWindow.mainWnd.connectToServer();
         }
 
-        private void radioShowNotification_Checked(object sender, RoutedEventArgs e)
-        {
-            var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("Configuration.ini");
-
-            data["SETTINGS"]["SHOW_NOTIFICATION"] = true.ToString();
-            parser.WriteFile("Configuration.ini", data);
-        }
-        private void radioHideNotification_Checked(object sender, RoutedEventArgs e)
-        {
-            var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("Configuration.ini");
-
-            data["SETTINGS"]["SHOW_NOTIFICATION"] = false.ToString();
-            parser.WriteFile("Configuration.ini", data);
-        }
-
-        private void radioSoundOn_Checked(object sender, RoutedEventArgs e)
-        {
-            var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("Configuration.ini");
-
-            data["SETTINGS"]["SOUND_ON"] = true.ToString();
-            parser.WriteFile("Configuration.ini", data);
-        }
-
-        private void radioSoundOff_Checked(object sender, RoutedEventArgs e)
-        {
-            var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("Configuration.ini");
-
-            data["SETTINGS"]["SOUND_ON"] = false.ToString();
-            parser.WriteFile("Configuration.ini", data);
-        }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
             MainWindow.mainWnd.Show();
