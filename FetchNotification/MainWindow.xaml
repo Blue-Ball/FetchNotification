@@ -47,7 +47,15 @@
             </Border.Effect>
         </Border>
         <StackPanel>
-            <Image Source="Res/Logo.png" Width="88" Height="73" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,60,0,0"/>
+            <Button x:Name="btnRed"  Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,50,50,0" BorderThickness="0" Background="Transparent"
+                ToolTip="{x:Static CC:Resources.connection_fail}" Click="btnRed_Click">
+                <Image Source="Res/RedDot.png"/>
+            </Button>
+            <Button x:Name="btnBlue"  Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,50,50,0" BorderThickness="0" Background="Transparent"
+                ToolTip="{x:Static CC:Resources.connected}" Visibility="Collapsed" Click="btnBlue_Click">
+                <Image Source="Res/BlueDot.png"/>
+            </Button>
+            <Image Source="Res/Logo.png" Width="88" Height="73" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0"/>
             <Label Content="To always be on the wave of things!" FontFamily="Helvetica Neue" FontSize="16" Foreground="#707070" HorizontalAlignment="Center" Margin="0,29,0,0"/>
             <Label Content="Notifications" FontFamily="Heebo-Regular" FontSize="16" Foreground="#A9ABC3" HorizontalAlignment="Left" Margin="57,0,0,0"/>
             <ScrollViewer Margin="25,0,25,0" Width="Auto" VerticalScrollBarVisibility="Auto" Height="370"

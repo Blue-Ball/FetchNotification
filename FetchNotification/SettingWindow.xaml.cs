@@ -65,7 +65,7 @@ namespace FetchNotification
 
             this.Hide();
             MainWindow.mainWnd.Show();
-            MainWindow.mainWnd.connectToServer();
+            MainWindow.mainWnd.ConnectToServer();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

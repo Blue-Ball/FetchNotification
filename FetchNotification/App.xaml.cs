@@ -16,7 +16,7 @@ namespace FetchNotification
         App()
         {
             // For Test
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("he");
+            // System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("he");
         }
     }
 }

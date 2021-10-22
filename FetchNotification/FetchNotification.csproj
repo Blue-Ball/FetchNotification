@@ -10,8 +10,12 @@
   <ItemGroup>
     <None Remove="Logo.png" />
     <None Remove="Res\back.png" />
+    <None Remove="Res\bell-off.png" />
     <None Remove="Res\bell.png" />
+    <None Remove="Res\BlueDot.png" />
     <None Remove="Res\Logo.ico" />
+    <None Remove="Res\mute.png" />
+    <None Remove="Res\RedDot.png" />
     <None Remove="Res\settings.png" />
   </ItemGroup>
 
@@ -32,13 +36,25 @@
     <Resource Include="Res\back.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Res\bell-off.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Res\bell.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Res\BlueDot.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Res\Logo.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Res\Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Res\mute.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Res\RedDot.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Res\settings.png">

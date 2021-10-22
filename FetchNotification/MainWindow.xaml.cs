@@ -115,6 +115,17 @@ namespace FetchNotification
 
             BalloonIcon bi = type == NotificationType.Error ? BalloonIcon.Error : BalloonIcon.Info;
             tb.ShowBalloonTip("Server Status", msg, bi);
+
+            if(_Client != null && _Client.Connected)
+            {
+                btnRed.Visibility = Visibility.Collapsed;
+                btnBlue.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnRed.Visibility = Visibility.Visible;
+                btnBlue.Visibility = Visibility.Collapsed;
+            }
         }
 
         public void ReceivedMessage(String msg)
@@ -173,9 +184,9 @@ namespace FetchNotification
 
             if (msgJson.type == "call_bounce")
             {
-                if (add_lead_notification)
+                if (call_bounce_notification)
                     _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
-                if (add_lead_mute)
+                if (call_bounce_mute)
                 {
                     SoundPlayer player = new SoundPlayer("notification.wav");
                     player.Load();
@@ -185,9 +196,9 @@ namespace FetchNotification
 
             if (msgJson.type == "schedualed_mission")
             {
-                if (add_lead_notification)
+                if (schedualed_mission_notification)
                     _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
-                if (add_lead_mute)
+                if (schedualed_mission_mute)
                 {
                     SoundPlayer player = new SoundPlayer("notification.wav");
                     player.Load();
@@ -197,9 +208,9 @@ namespace FetchNotification
 
             if (msgJson.type == "new_mission")
             {
-                if (add_lead_notification)
+                if (new_mission_notification)
                     _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
-                if (add_lead_mute)
+                if (new_mission_mute)
                 {
                     SoundPlayer player = new SoundPlayer("notification.wav");
                     player.Load();
@@ -209,9 +220,9 @@ namespace FetchNotification
 
             if (msgJson.type == "new_email")
             {
-                if (add_lead_notification)
+                if (new_email_notification)
                     _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
-                if (add_lead_mute)
+                if (new_email_mute)
                 {
                     SoundPlayer player = new SoundPlayer("notification.wav");
                     player.Load();
@@ -221,9 +232,9 @@ namespace FetchNotification
 
             if (msgJson.type == "chat_message")
             {
-                if (add_lead_notification)
+                if (chat_message_notification)
                     _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
-                if (add_lead_mute)
+                if (chat_message_mute)
                 {
                     SoundPlayer player = new SoundPlayer("notification.wav");
                     player.Load();
@@ -233,9 +244,9 @@ namespace FetchNotification
 
             if (msgJson.type == "service_message")
             {
-                if (add_lead_notification)
+                if (service_message_notification)
                     _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
-                if (add_lead_mute)
+                if (service_message_mute)
                 {
                     SoundPlayer player = new SoundPlayer("notification.wav");
                     player.Load();
@@ -245,9 +256,9 @@ namespace FetchNotification
 
             if (msgJson.type == "mission_message")
             {
-                if (add_lead_notification)
+                if (mission_message_notification)
                     _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
-                if (add_lead_mute)
+                if (mission_message_mute)
                 {
                     SoundPlayer player = new SoundPlayer("notification.wav");
                     player.Load();
@@ -257,9 +268,9 @@ namespace FetchNotification
 
             if (msgJson.type == "system_message")
             {
-                if (add_lead_notification)
+                if (system_message_notification)
                     _notificationManager.Show(content, "", null, onClick: () => OpenUrl(content));
-                if (add_lead_mute)
+                if (system_message_mute)
                 {
                     SoundPlayer player = new SoundPlayer("notification.wav");
                     player.Load();
@@ -314,7 +325,7 @@ namespace FetchNotification
         {
             this.MouseDown += delegate { DragMove(); };
 
-            connectToServer();
+            ConnectToServer();
         }
 
         private void btnSetting_Click(object sender, RoutedEventArgs e)
@@ -340,7 +351,7 @@ namespace FetchNotification
             
         }
 
-        public void connectToServer()
+        public void ConnectToServer()
         {
             var parser = new FileIniDataParser();
             IniData data = parser.ReadFile("Configuration.ini");
@@ -364,6 +375,16 @@ namespace FetchNotification
 
         private void btnAlart_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void btnRed_Click(object sender, RoutedEventArgs e)
+        {
+            ConnectToServer();
+        }
+
+        private void btnBlue_Click(object sender, RoutedEventArgs e)
+        {
+            DisconnectToServer();
         }
     }
 }
