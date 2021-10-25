@@ -31,6 +31,7 @@ namespace FetchNotification
     public partial class MainWindow : Window
     {
         private readonly NotificationManager _notificationManager = new NotificationManager();
+        public System.Windows.Threading.DispatcherTimer dispatcherTimer;
         public static MainWindow mainWnd = null;
         public static SettingWindow settingWnd = null;
         public static SettingWindowConnected settingWndConnected = null;
@@ -325,6 +326,11 @@ namespace FetchNotification
         {
             this.MouseDown += delegate { DragMove(); };
 
+            dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 60);
+            dispatcherTimer.Start();
+
             var parser = new FileIniDataParser();
             IniData data = parser.ReadFile("Configuration.ini");
 
@@ -411,6 +417,31 @@ namespace FetchNotification
         private void btnBlue_Click(object sender, RoutedEventArgs e)
         {
             DisconnectToServer();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            if (_Client != null && _Client.Connected)
+            {
+
+            }
+            else
+            {
+                var parser = new FileIniDataParser();
+                IniData data = parser.ReadFile("Configuration.ini");
+
+                string strServerProtocal = data["CONNECTION"]["SERVER_PROTOCAL"];
+                string strServerAddress = data["CONNECTION"]["SERVER_ADDRESS"];
+                int nServerPort = int.Parse(data["CONNECTION"]["SERVER_PORT"]);
+                if (data["CONNECTION"]["USER_ID"].Length > 0)
+                {
+                    ConnectToServer();
+                }
+            }
+                
+
+            // Forcing the CommandManager to raise the RequerySuggested event
+            CommandManager.InvalidateRequerySuggested();
         }
     }
 }
