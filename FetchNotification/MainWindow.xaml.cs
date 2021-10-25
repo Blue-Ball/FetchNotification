@@ -325,7 +325,20 @@ namespace FetchNotification
         {
             this.MouseDown += delegate { DragMove(); };
 
-            ConnectToServer();
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile("Configuration.ini");
+
+            string strServerProtocal = data["CONNECTION"]["SERVER_PROTOCAL"];
+            string strServerAddress = data["CONNECTION"]["SERVER_ADDRESS"];
+            int nServerPort = int.Parse(data["CONNECTION"]["SERVER_PORT"]);
+            if (data["CONNECTION"]["USER_ID"].Length > 0)
+            {
+                ConnectToServer();
+            }
+            else
+            {
+                btnSetting_Click(null, null);
+            }
         }
 
         private void btnSetting_Click(object sender, RoutedEventArgs e)
@@ -379,7 +392,20 @@ namespace FetchNotification
 
         private void btnRed_Click(object sender, RoutedEventArgs e)
         {
-            ConnectToServer();
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile("Configuration.ini");
+
+            string strServerProtocal = data["CONNECTION"]["SERVER_PROTOCAL"];
+            string strServerAddress = data["CONNECTION"]["SERVER_ADDRESS"];
+            int nServerPort = int.Parse(data["CONNECTION"]["SERVER_PORT"]);
+            if (data["CONNECTION"]["USER_ID"].Length > 0)
+            {
+                ConnectToServer();
+            }
+            else
+            {
+                btnSetting_Click(null, null);
+            }
         }
 
         private void btnBlue_Click(object sender, RoutedEventArgs e)
