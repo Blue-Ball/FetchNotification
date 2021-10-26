@@ -30,6 +30,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Notifications.Wpf\Notifications.Wpf.csproj" />
     <ProjectReference Include="..\NotifyIconWpf\NotifyIconWpf.csproj" />
+    <ProjectReference Include="..\RedCell.Diagnostics.Update\RedCell.Diagnostics.Update.csproj" />
+    <ProjectReference Include="..\RedCell.Net\RedCell.Net.csproj" />
   </ItemGroup>
 
   <ItemGroup>
