@@ -3,6 +3,7 @@ using IniParser;
 using IniParser.Model;
 using Newtonsoft.Json;
 using Notifications.Wpf;
+using RedCell.Diagnostics.Update;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -325,6 +326,16 @@ namespace FetchNotification
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.MouseDown += delegate { DragMove(); };
+
+            var updater = new Updater();
+            if(updater.IsThereUpdate())
+            {
+                MessageBoxResult dialogResult = MessageBox.Show("There is new Version. Would you update it?", "Update", MessageBoxButton.OKCancel);
+                if(dialogResult == MessageBoxResult.OK)
+                {
+                    updater.Update();
+                }
+            }
 
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);

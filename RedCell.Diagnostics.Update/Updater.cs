@@ -149,10 +149,55 @@ namespace RedCell.Diagnostics.Update
             Log.Write("Check ending.");
         }
 
+        public bool IsThereUpdate()
+        {
+            var remoteUri = new Uri(this._localConfig.RemoteConfigUri);
+
+            Log.Write("Fetching '{0}'.", remoteUri.AbsoluteUri);
+            var http = new Fetch { Retries = 5, RetrySleep = 30000, Timeout = 30000 };
+            http.Load(remoteUri.AbsoluteUri);
+            if (!http.Success)
+            {
+                Log.Write("Fetch error: {0}", http.Response.StatusDescription);
+                this._remoteConfig = null;
+                return false;
+            }
+
+            string data = Encoding.UTF8.GetString(http.ResponseData);
+            this._remoteConfig = new Manifest(data);
+
+            if (this._remoteConfig == null)
+                return false;
+
+            if (this._localConfig.SecurityToken != this._remoteConfig.SecurityToken)
+            {
+                Log.Write("Security token mismatch.");
+                return false;
+            }
+            Log.Write("Remote config is valid.");
+            Log.Write("Local version is  {0}.", this._localConfig.Version);
+            Log.Write("Remote version is {0}.", this._remoteConfig.Version);
+
+            if (this._remoteConfig.Version == this._localConfig.Version)
+            {
+                Log.Write("Versions are the same.");
+                Log.Write("Check ending.");
+                return false;
+            }
+            if (this._remoteConfig.Version < this._localConfig.Version)
+            {
+                Log.Write("Remote version is older. That's weird.");
+                Log.Write("Check ending.");
+                return false;
+            }
+
+            return true;
+        }
+
         /// <summary>
         /// Updates this instance.
         /// </summary>
-        private void Update ()
+        public void Update ()
         {
 
             Log.Write("Updating '{0}' files.", this._remoteConfig.Payloads.Length);
@@ -191,6 +236,7 @@ namespace RedCell.Diagnostics.Update
                 {
                     try
                     {
+                        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
                         var zipfile = Path.Combine(WorkPath, update);
                         using (var zip = ZipFile.Read(zipfile))
                             zip.ExtractAll(WorkPath, ExtractExistingFileAction.Throw);

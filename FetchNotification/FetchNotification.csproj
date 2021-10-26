@@ -24,6 +24,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
     <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
     <PackageReference Include="WPFLocalizeExtension" Version="3.9.0" />
   </ItemGroup>
 
@@ -100,6 +101,9 @@
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="update.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
