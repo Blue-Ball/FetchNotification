@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Res\Logo.ico</ApplicationIcon>
+    <SignAssembly>false</SignAssembly>
+    <StartupObject />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
+    <OutputPath>..\FetchNotification\bin\Debug</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\FetchNotification\bin\Release</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Res\Logo.ico" />
+    <None Remove="Res\Logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Res\Logo.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Res\Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="rename &quot;$(OutDir)Updater.exe&quot; &quot;Updater&quot;" />
+  </Target>
+
+</Project>

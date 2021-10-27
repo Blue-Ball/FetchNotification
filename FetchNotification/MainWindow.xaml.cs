@@ -326,36 +326,6 @@ namespace FetchNotification
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.MouseDown += delegate { DragMove(); };
-
-            var updater = new Updater();
-            if(updater.IsThereUpdate())
-            {
-                MessageBoxResult dialogResult = MessageBox.Show("There is new Version. Would you update it?", "Update", MessageBoxButton.OKCancel);
-                if(dialogResult == MessageBoxResult.OK)
-                {
-                    updater.Update();
-                }
-            }
-
-            dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 60);
-            dispatcherTimer.Start();
-
-            var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("Configuration.ini");
-
-            string strServerProtocal = data["CONNECTION"]["SERVER_PROTOCAL"];
-            string strServerAddress = data["CONNECTION"]["SERVER_ADDRESS"];
-            int nServerPort = int.Parse(data["CONNECTION"]["SERVER_PORT"]);
-            if (data["CONNECTION"]["USER_ID"].Length > 0)
-            {
-                ConnectToServer();
-            }
-            else
-            {
-                btnSetting_Click(null, null);
-            }
         }
 
         private void btnSetting_Click(object sender, RoutedEventArgs e)
@@ -378,7 +348,39 @@ namespace FetchNotification
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
-            
+            var updater = new Updater();
+            if (updater.IsThereUpdate())
+            {
+                MessageBoxResult dialogResult = MessageBox.Show("There is new Version. Would you update it?", "Update", MessageBoxButton.OKCancel);
+                if (dialogResult == MessageBoxResult.OK)
+                {
+                    updater.Update();
+                    string updaterApp = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Updater");
+                    var spawn = Process.Start(updaterApp);
+
+                    this.Close();
+                }
+            }
+
+            dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 60);
+            dispatcherTimer.Start();
+
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile("Configuration.ini");
+
+            string strServerProtocal = data["CONNECTION"]["SERVER_PROTOCAL"];
+            string strServerAddress = data["CONNECTION"]["SERVER_ADDRESS"];
+            int nServerPort = int.Parse(data["CONNECTION"]["SERVER_PORT"]);
+            if (data["CONNECTION"]["USER_ID"].Length > 0)
+            {
+                ConnectToServer();
+            }
+            else
+            {
+                btnSetting_Click(null, null);
+            }
         }
 
         public void ConnectToServer()

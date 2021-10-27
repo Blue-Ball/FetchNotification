@@ -9,7 +9,7 @@
         xmlns:CC="clr-namespace:FetchNotification.Properties"
         mc:Ignorable="d"
         Title="Main" Height="710" Width="430"
-        WindowStartupLocation="CenterScreen" Icon="/Res/Logo.ico" ResizeMode="NoResize" SizeToContent="Manual" WindowStyle="None"
+        WindowStartupLocation="CenterScreen" Icon="Res/Logo.ico" ResizeMode="NoResize" SizeToContent="Manual" WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
         Loaded="Window_Loaded"

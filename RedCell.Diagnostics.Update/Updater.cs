@@ -251,41 +251,52 @@ namespace RedCell.Diagnostics.Update
             }
 
             // Change the currently running executable so it can be overwritten.
-            Process thisprocess = Process.GetCurrentProcess();
-            string me = thisprocess.MainModule.FileName;
-            string bak = me + ".bak";
-            Log.Write("Renaming running process to '{0}'.", bak);
-            if(File.Exists(bak))
-                File.Delete(bak);
-            File.Move(me, bak);
-            File.Copy(bak, me);
+            //Process thisprocess = Process.GetCurrentProcess();
+            //string me = thisprocess.MainModule.FileName;
+            //string bak = me + ".bak";
+            //Log.Write("Renaming running process to '{0}'.", bak);
+            //if(File.Exists(bak))
+            //    File.Delete(bak);
+            //File.Move(me, bak);
+            //File.Copy(bak, me);
 
             // Write out the new manifest.
             _remoteConfig.Write(Path.Combine(WorkPath, _localConfigFile.Name));
 
-            // Copy everything.
-            var directory = new DirectoryInfo(WorkPath);
-            var files = directory.GetFiles("*.*", SearchOption.AllDirectories);
-            foreach (FileInfo file in files)
-            {
-                string destination = file.FullName.Replace(directory.FullName+@"\", "");
-                Log.Write("installing file '{0}'.", destination);
-                Directory.CreateDirectory(new FileInfo(destination).DirectoryName);
-                file.CopyTo(destination, true);
-            }
-
-            // Clean up.
-            Log.Write("Deleting work directory.");
-            Directory.Delete(WorkPath, true);
-
             // Restart.
-            Log.Write("Spawning new process.");
-            var spawn = Process.Start(me);
-            Log.Write("New process ID is {0}", spawn.Id);
-            Log.Write("Closing old running process {0}.", thisprocess.Id);
-            thisprocess.CloseMainWindow();
-            thisprocess.Close();
-            thisprocess.Dispose();
+            //Log.Write("Spawning new process.");
+
+            //string updater = "Updater";
+            //var spawn = Process.Start(updater);
+
+            //Log.Write("New process ID is {0}", spawn.Id);
+            //Log.Write("Closing old running process {0}.", thisprocess.Id);
+            //thisprocess.CloseMainWindow();
+            //thisprocess.Close();
+            //thisprocess.Dispose();
+
+            //var directory = new DirectoryInfo(WorkPath);
+            //var files = directory.GetFiles("*.*", SearchOption.AllDirectories);
+            //foreach (FileInfo file in files)
+            //{
+            //    string destination = file.FullName.Replace(directory.FullName+@"\", "");
+            //    Log.Write("installing file '{0}'.", destination);
+            //    Directory.CreateDirectory(new FileInfo(destination).DirectoryName);
+            //    file.CopyTo(destination, true);
+            //}
+
+            //// Clean up.
+            //Log.Write("Deleting work directory.");
+            //Directory.Delete(WorkPath, true);
+
+            //// Restart.
+            //Log.Write("Spawning new process.");
+            //var spawn = Process.Start(me);
+            //Log.Write("New process ID is {0}", spawn.Id);
+            //Log.Write("Closing old running process {0}.", thisprocess.Id);
+            //thisprocess.CloseMainWindow();
+            //thisprocess.Close();
+            //thisprocess.Dispose();
         }
         #endregion
     }
