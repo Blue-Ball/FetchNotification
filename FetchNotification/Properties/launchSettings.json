@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FetchNotification": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Manifest version="1">
 	<CheckInterval>900</CheckInterval>
-	<RemoteConfigUri>http://localhost/update.xml</RemoteConfigUri>
+	<RemoteConfigUri>https://biz1.co.il/update.xml</RemoteConfigUri>
 	<SecurityToken>D68EF3A7-E787-4CC4-B020-878BA649B4CD</SecurityToken>
-	<BaseUri>http://localhost/</BaseUri>
+	<BaseUri>https://biz1.co.il/</BaseUri>
 	<Payload>biz1Desktop.zip</Payload>
 </Manifest>

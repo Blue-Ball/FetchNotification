@@ -47,12 +47,6 @@ namespace FetchNotification
 
         static void InitializeClient(String strServerProtocal, String strServerAddress, int nServerPort, string strParam)
         {
-            // For Test
-            strServerProtocal = "ws";
-            strServerAddress = "localhost";
-            nServerPort = 9006;
-            strParam = "123";
-
             String strURI = strServerProtocal + "://" + strServerAddress + ":" + nServerPort.ToString() + "/" + strParam;
             InitializeClientURI(strURI);
         }
