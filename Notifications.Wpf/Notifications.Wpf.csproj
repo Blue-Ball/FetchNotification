@@ -46,6 +46,12 @@
     <OutputPath>bin\Release\net461\</OutputPath>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>FetchNotification.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -85,6 +91,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="FetchNotification.snk" />
     <None Include="Notifications.Wpf.nuspec" />
     <None Include="pack.bat" />
   </ItemGroup>

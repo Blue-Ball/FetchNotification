@@ -6,6 +6,9 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Res\Logo.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>FetchNotification.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -38,7 +41,6 @@
     <ProjectReference Include="..\Notifications.Wpf\Notifications.Wpf.csproj" />
     <ProjectReference Include="..\NotifyIconWpf\NotifyIconWpf.csproj" />
     <ProjectReference Include="..\RedCell.Diagnostics.Update\RedCell.Diagnostics.Update.csproj" />
-    <ProjectReference Include="..\RedCell.Net\RedCell.Net.csproj" />
   </ItemGroup>
 
   <ItemGroup>

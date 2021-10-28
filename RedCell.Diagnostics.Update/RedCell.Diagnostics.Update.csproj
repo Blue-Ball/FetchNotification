@@ -40,6 +40,12 @@
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>FetchNotification.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ionic.Zip.Reduced">
       <HintPath>..\packages\DotNetZip.Reduced.1.9.1.8\lib\net20\Ionic.Zip.Reduced.dll</HintPath>
@@ -63,6 +69,7 @@
     <Compile Include="Updater.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="FetchNotification.snk" />
     <None Include="packages.config" />
     <None Include="Update.cd" />
   </ItemGroup>
