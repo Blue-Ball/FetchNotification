@@ -342,20 +342,6 @@ namespace FetchNotification
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
-            var updater = new Updater();
-            if (updater.IsThereUpdate())
-            {
-                MessageBoxResult dialogResult = MessageBox.Show("There is new Version. Would you update it?", "Update", MessageBoxButton.OKCancel);
-                if (dialogResult == MessageBoxResult.OK)
-                {
-                    updater.Update();
-                    string updaterApp = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Updater");
-                    var spawn = Process.Start(updaterApp);
-
-                    this.Close();
-                }
-            }
-
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 60);

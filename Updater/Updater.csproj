@@ -8,6 +8,7 @@
     <SignAssembly>true</SignAssembly>
     <StartupObject />
     <AssemblyOriginatorKeyFile>FetchNotification.snk</AssemblyOriginatorKeyFile>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -15,7 +16,16 @@
     <OutputPath>..\FetchNotification\bin\Debug</OutputPath>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <WarningLevel>5</WarningLevel>
+    <OutputPath>..\FetchNotification\bin\Debug</OutputPath>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\FetchNotification\bin\Release</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <OutputPath>..\FetchNotification\bin\Release</OutputPath>
   </PropertyGroup>
 

@@ -87,7 +87,11 @@ namespace FetchNotification
         {
             this.Hide();
             MainWindow.mainWnd.DisconnectToServer();
-            MainWindow.mainWnd.Show();
+            //MainWindow.mainWnd.Show();
+            MainWindow.mainWnd.tb.Visibility = Visibility.Collapsed;
+            MainWindow.mainWnd.Close();
+            Login loginWnd = new Login();
+            loginWnd.Show();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
